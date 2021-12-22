@@ -222,6 +222,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 animated = !animated;
                                 if (animated) {
                                   _controller.play();
+                                } else {
+                                  _controller.pause();
                                 }
                               });
                             },

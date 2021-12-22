@@ -36,11 +36,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final VideoPlayerController _controller =
-      VideoPlayerController.asset("assets/videos/long.webm");
+      VideoPlayerController.asset("videos/long.webm");
 
   late Game game;
 
-  bool animated = true;
+  bool animated = false;
 
   double height = 0;
   double width = 0;
@@ -49,13 +49,15 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    game = Game();
     _controller.initialize().then((_) {
-      _controller.play();
       _controller.setLooping(true);
       _controller.setVolume(0);
-      setState(() {});
+      _controller.play();
+      setState(() {
+        animated = true;
+      });
     });
+    game = Game();
   }
 
   @override
